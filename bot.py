@@ -8,14 +8,14 @@
 import irclib
 import ircbot
 import time
-# win32api download : http://sourceforge.net/projects/pywin32/files/pywin32/Build%20218/pywin32-218.win32-py2.7.exe/download
+# win32api download : http://sourceforge.net/projects/pywin32/files/pywin32/Build%20218/
 import win32api
 import win32con
 
 class Bot(ircbot.SingleServerIRCBot):
 	# Initialize the bot
     def __init__(self):
-		# format of this function : (self, [(IRC server, port, password)], name, comment)
+	# format of this function : (self, [(IRC server, port, password)], name, comment)
         ircbot.SingleServerIRCBot.__init__(self, [("irc.twitch.tv", 6667, "oauth:yourkey")], # key : www.twitchapps.com/tmi 
                                            "TwitchAccountName", "IRC Bot")
     def on_welcome(self, serv, ev):
@@ -24,11 +24,11 @@ class Bot(ircbot.SingleServerIRCBot):
     def on_pubmsg(self, serv, ev):
         # Gets the message
         message = ev.arguments()[0].lower()
-		# Gets the author (ex : dentuk!~dentuk@EpiK-BE9687C2.fbx.proxad.net)
+	# Gets the author (ex : dentuk!~dentuk@EpiK-BE9687C2.fbx.proxad.net)
         author = ev.source()
-		# gets the ! position to remove the rest
+	# gets the ! position to remove the rest
         namePosition = author.index('!')
-		# save only the author
+	# save only the author
         author = author[0:namePosition]
         #print author," : ",message # print test
         if message == "a":
